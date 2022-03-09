@@ -3,7 +3,14 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+
     steps:
-      - run: |
+      - name: Add PWD to pythonpath
+        run: |
+          echo 'PYTHONPATH<<EOF' >> $GITHUB_ENV
+          echo $(pwd) >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      - name: Run tests
+        run: |
           pip install pytest
           pytest .
