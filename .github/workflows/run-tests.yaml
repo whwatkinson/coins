@@ -10,7 +10,9 @@ jobs:
           echo 'PYTHONPATH<<EOF' >> $GITHUB_ENV
           echo $(pwd) >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
-      - name: Run tests
+      - name: Install pytest
         run: |
           pip install pytest
+      - name: Run tests
+        run: |
           pytest .
